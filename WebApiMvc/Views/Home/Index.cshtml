@@ -1,0 +1,26 @@
+﻿@using Business
+@using Business.Concrete
+@using DataAccess.Abstract
+@using DataAccess.Concrete.EntityFramework
+@using Entities
+@model List<Entities.Product>
+@{
+	ViewData["Title"] = "GetList";
+}
+
+@{
+	ProductManager pm = new ProductManager(new EfProductDal() );
+	List<Product> list = new List<Product>();
+}
+
+<h1>GetList</h1>
+<div class="list-group">
+	<a href="#" class="list-group-item"><span class="fa fa-home"></span> Products @list.Count</a>
+	@foreach (Product product in list)
+	{
+		<a href="#" class="list-group-item">
+			@product.UnitPrice
+		</a>
+	}
+
+</div>
